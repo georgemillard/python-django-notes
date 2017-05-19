@@ -179,3 +179,16 @@ A useful utility package. FieldTracker is particularly helpful for tracking fiel
 `pip install django-model-utils`
 
 `from model_utils import FieldTracker`
+
+### Unit Testing
+Django uses Python's default UnitTest module, but this lacks coloured output (what an oversight). 'Green' is a good alternative.
+
+```
+pip install green
+python manage.py test --testrunner=green.djangorunner.DjangoRunner
+ OR
+settings.py:
+TEST_RUNNER="green.djangorunner.DjangoRunner"
+
+python manage.py test
+```
