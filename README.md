@@ -32,7 +32,7 @@ settings.py
 
 INSTALLED_APPS = (
     ...
-    'django_extensions',
+    'app_name',
     ...
 )
 ```
@@ -102,7 +102,7 @@ Test Static Files Collection:
 python manage.py collectstatic
 ```
 
-To allow media and static files to be stores separately, and use AWS S3, create `myapp/custom_storages.py':
+To allow media and static files to be stored separately, and use AWS S3, create `myapp/custom_storages.py':
 
 ```
 from django.conf import settings
@@ -115,3 +115,20 @@ class MediaStorage(S3Boto3Storage):
     location = settings.MEDIAFILES_LOCATION
 ```
 
+### Models
+Create model classes in models.py
+Add to DB:
+
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### Django Admin View
+1. python manage.py createsuperuser
+2. Register your models in `admin.py:`
+
+    `admin.site.register(MyModel)`
+  
+3. Run Django's simple dev server: `python manage.py runserver`
+4. Login at http://localhost:8000/admin
