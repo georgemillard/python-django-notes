@@ -257,3 +257,10 @@ omit=asset_manager/migrations/*
 ```
 
 see `https://coverage.readthedocs.io/en/coverage-4.4.1/config.html`
+
+To run tests with a different settings file:
+`coverage run manage.py test --settings=project.settings-test`
+
+
+### Boto 3
+To get contents of AWS S3 Bucket programmatically
