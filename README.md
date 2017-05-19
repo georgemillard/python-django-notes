@@ -172,3 +172,10 @@ from .models import MyModel
 def intercept_pre_save(sender, instance, **kwargs):
     print('pre_save signal intercepted')
 ```
+
+### Django Model Utils
+A useful utility package. FieldTracker is particularly helpful for tracking field changes
+
+`pip install django-model-utils`
+
+`from model_utils import FieldTracker`
