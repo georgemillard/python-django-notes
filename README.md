@@ -32,7 +32,7 @@ settings.py
 
 INSTALLED_APPS = (
     ...
-    'app_name',
+    'myapp',
     ...
 )
 ```
@@ -132,3 +132,43 @@ python manage.py migrate
   
 3. Run Django's simple dev server: `python manage.py runserver`
 4. Login at http://localhost:8000/admin
+
+### Signals
+Used to monitor model pre-save, post-save etc functions, and run some code ie update AWS S3 when a Folder model is renamed
+
+myproject.settings.py:
+
+```
+INSTALLED APPS=[
+...
+```
+replace 'myapp' with
+```
+'myapp.apps.MyappConfig',
+...
+]
+
+
+
+myapp.apps.py:
+
+from django.apps import AppConfig
+
+class MyappConfig(AppConfig):
+    name = 'myapp'
+
+    def ready(self):
+        import myapp.signals
+
+
+myapp.signals.py
+
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+
+from .models import MyModel
+
+@receiver(pre_save, sender=MyModel)
+def intercept_pre_save(sender, instance, **kwargs):
+    print('pre_save signal intercepted')
+```
