@@ -209,3 +209,21 @@ coverage report -m
  covergae html
  ```
  This produces an html report at `project/htmlcov/index.html`
+
+You can use a .coveragerc file, in the same directory as manage.py to specify options:
+
+```
+[run]
+
+branch=true
+
+source=asset_manager
+       hive
+omit=asset_manager/migrations/*
+     asset_manager/tests.py
+     hive/wsgi.py
+     */__init__.py
+     manage.py
+```
+
+see `https://coverage.readthedocs.io/en/coverage-4.4.1/config.html`
