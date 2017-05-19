@@ -60,6 +60,36 @@ INSTALLED_APPS = (
 
 ### Using django-storages with Amazon S3 Storage
 
+AWS S3 Bucket Policy:
+
+```
+{
+    "Version": "2008-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadForGetBucketObjects",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::myBucket/*"
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::830686100485:user/DjangoS3Storages"
+            },
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::myBucket",
+                "arn:aws:s3:::myBucket/*"
+            ]
+        }
+    ]
+}
+```
+
 `pip install django-storages`
 
 `pip install boto3`
