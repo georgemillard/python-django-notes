@@ -185,10 +185,27 @@ Django uses Python's default UnitTest module, but this lacks coloured output (wh
 
 ```
 pip install green
+
 python manage.py test --testrunner=green.djangorunner.DjangoRunner
+
  OR
+ 
 settings.py:
 TEST_RUNNER="green.djangorunner.DjangoRunner"
 
 python manage.py test
 ```
+
+### Coverage.py
+To test code coverage
+
+```
+pip install coverage
+coverage run --source='.' manage.py test
+coverage report -m
+
+  ALSO
+  
+ covergae html
+ ```
+ This produces an html report at `project/htmlcov/index.html`
