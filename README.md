@@ -284,14 +284,22 @@ logging.debug('Start of program')
 To get contents of AWS S3 Bucket programmatically (objects returned alphabetically)
 
 ```
-for obj in s3_utils.s3.list_objects(Bucket = s3_utils.bucket)['Contents']:
+s3 = boto3.client(
+    's3',
+    aws_access_key_id = settings.AWS_ACCESS_KEY_ID,
+    aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY)
+bucket = settings.AWS_STORAGE_BUCKET_NAME
+```
+
+```
+for obj in s3.list_objects(Bucket = s3_utils.bucket)['Contents']:
             bucket_contents.append(obj['Key'])
 ```
 
 To delete programmatically
 
 ```
-contents = s3_utils.s3.list_objects(Bucket = s3_utils.bucket)
+contents = s3.list_objects(Bucket = s3_utils.bucket)
         if 'Contents' in contents:
             for obj in contents['Contents']:
                 s3_utils.s3.delete_object(Bucket = s3_utils.bucket, Key = obj['Key'])
