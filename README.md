@@ -261,6 +261,16 @@ see `https://coverage.readthedocs.io/en/coverage-4.4.1/config.html`
 To run tests with a different settings file:
 `coverage run manage.py test --settings=project.settings-test`
 
+To disable signals during testing:
+
+```
+def setUp(self):
+        signals.post_save.disconnect(save_folder_to_s3, sender=Folder)
+        signals.post_delete.disconnect(delete_folder, sender=Folder)
+```
+
+This seems to disable signals within the scope of the TestCase class, no need to reconnect for other Test classes... I think!
+
 ### Logging
 
 ```
