@@ -261,6 +261,24 @@ see `https://coverage.readthedocs.io/en/coverage-4.4.1/config.html`
 To run tests with a different settings file:
 `coverage run manage.py test --settings=project.settings-test`
 
+### Logging
+
+```
+setings.py:
+TIME_ZONE = 'Europe/London'
+LOFILE = 'logs/project-logs.txt'
+
+from django.conf import settings
+
+import logging
+logging.basicConfig(
+    filename=settings.LOGFILE,
+    level=logging.INFO,
+    format=' %(asctime)s - %(levelname)s - %(message)s'
+    )
+# logging.disable(logging.CRITICAL)
+logging.debug('Start of program')
+```
 
 ### Boto 3
 To get contents of AWS S3 Bucket programmatically
