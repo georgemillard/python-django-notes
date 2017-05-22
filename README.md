@@ -292,6 +292,7 @@ bucket = settings.AWS_STORAGE_BUCKET_NAME
 ```
 
 ```
+bucket_contents = []
 for obj in s3.list_objects(Bucket = s3_utils.bucket)['Contents']:
             bucket_contents.append(obj['Key'])
 ```
