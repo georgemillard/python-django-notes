@@ -210,22 +210,6 @@ A useful utility package. FieldTracker is particularly helpful for tracking fiel
 
 `from model_utils import FieldTracker`
 
-### Unit Testing
-Django uses Python's default UnitTest module, but this lacks coloured output (what an oversight). 'Green' is a good alternative.
-
-```
-pip install green
-
-python manage.py test --testrunner=green.djangorunner.DjangoRunner
-
- OR
- 
-settings.py:
-TEST_RUNNER="green.djangorunner.DjangoRunner"
-
-python manage.py test
-```
-
 ### Coverage.py
 To test code coverage
 
@@ -258,10 +242,12 @@ omit=asset_manager/migrations/*
 
 see `https://coverage.readthedocs.io/en/coverage-4.4.1/config.html`
 
+Then you can run: `coverage run manage.py test`
+
 To run tests with a different settings file:
 `coverage run manage.py test --settings=project.settings-test`
 
-To disable signals during testing:
+To disable signals during certain tests:
 
 ```
 def setUp(self):
@@ -291,4 +277,4 @@ logging.debug('Start of program')
 ```
 
 ### Boto 3
-To get contents of AWS S3 Bucket programmatically
+To get contents of AWS S3 Bucket programmatically (objects returned alphabetically)
