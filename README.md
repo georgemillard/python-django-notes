@@ -250,12 +250,16 @@ To run tests with a different settings file:
 To disable signals during certain tests:
 
 ```
-def setUp(self):
         signals.post_save.disconnect(save_folder_to_s3, sender=Folder)
         signals.post_delete.disconnect(delete_folder, sender=Folder)
 ```
 
-This seems to disable signals within the scope of the TestCase class, no need to reconnect for other Test classes... I think!
+Note TestCase methods are run alphabetically, independently of their TestCase class! This means that each method needs to be atomic, and must undo any changes that it has made. So signals will need to be reconnected if a method has disconnected them, after it has finished.
+
+```
+        signals.post_save.disconnect(save_folder_to_s3, sender=Folder)
+        signals.post_delete.disconnect(delete_folder, sender=Folder)
+```
 
 ### Logging
 
@@ -278,3 +282,17 @@ logging.debug('Start of program')
 
 ### Boto 3
 To get contents of AWS S3 Bucket programmatically (objects returned alphabetically)
+
+```
+for obj in s3_utils.s3.list_objects(Bucket = s3_utils.bucket)['Contents']:
+            bucket_contents.append(obj['Key'])
+```
+
+To delete programmatically
+
+```
+contents = s3_utils.s3.list_objects(Bucket = s3_utils.bucket)
+        if 'Contents' in contents:
+            for obj in contents['Contents']:
+                s3_utils.s3.delete_object(Bucket = s3_utils.bucket, Key = obj['Key'])
+```
