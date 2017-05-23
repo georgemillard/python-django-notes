@@ -220,9 +220,9 @@ coverage report -m
 
   ALSO
   
- covergae html
- ```
- This produces an html report at `project/htmlcov/index.html`
+covergae html
+```
+This produces an html report at `project/htmlcov/index.html`
 
 You can use a .coveragerc file, in the same directory as manage.py to specify options:
 
@@ -247,18 +247,21 @@ Then you can run: `coverage run manage.py test`
 To run tests with a different settings file:
 `coverage run manage.py test --settings=project.settings-test`
 
+To run just a single test file eg. model_tests.py
+`coverage run manage.py test myapp.tests.model_tests`
+
 To disable signals during certain tests:
 
 ```
-        signals.post_save.disconnect(save_folder_to_s3, sender=Folder)
-        signals.post_delete.disconnect(delete_folder, sender=Folder)
+    signals.post_save.disconnect(save_folder_to_s3, sender=Folder)
+    signals.post_delete.disconnect(delete_folder, sender=Folder)
 ```
 
 Note TestCase methods are run alphabetically, independently of their TestCase class! This means that each method needs to be atomic, and must undo any changes that it has made. So signals will need to be reconnected if a method has disconnected them, after it has finished.
 
 ```
-        signals.post_save.disconnect(save_folder_to_s3, sender=Folder)
-        signals.post_delete.disconnect(delete_folder, sender=Folder)
+    signals.post_save.disconnect(save_folder_to_s3, sender=Folder)
+    signals.post_delete.disconnect(delete_folder, sender=Folder)
 ```
 
 ### Logging
