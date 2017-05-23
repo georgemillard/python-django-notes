@@ -115,21 +115,13 @@ AWS_SECRET_ACCESS_KEY = 'aws_secret_access_key'
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATICFILES_LOCATION = 'static'
-# Tell the staticfiles app to use S3Boto3 storage when writing the collected static files (when you run `collectstatic`).
-STATICFILES_STORAGE = 'myapp.custom_storages.StaticStorage'
-STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+STATIC_URL = '/static/'
 
+DEFAULT_FILE_STORAGE = 'asset_manager.custom_storages.MediaStorage'
 MEDIAFILES_LOCATION = 'media'
-
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-DEFAULT_FILE_STORAGE = 'myapp.custom_storages.MediaStorage'
-```
-
-Test Static Files Collection:
-
-```
-python manage.py collectstatic
 ```
 
 To allow media and static files to be stored separately, and use AWS S3, create `myapp/custom_storages.py':
@@ -143,6 +135,12 @@ class StaticStorage(S3Boto3Storage):
 
 class MediaStorage(S3Boto3Storage):
     location = settings.MEDIAFILES_LOCATION
+```
+
+Test Static Files Collection:
+
+```
+python manage.py collectstatic
 ```
 
 ### Models
