@@ -320,3 +320,18 @@ CREATE USER 'user' WITH PASSWORD 'password';
 GRANT ALL PRIVILEGES ON DATABASE db TO user;
 ALTER USER user CREATEDB;
 ```
+
+settings.py:
+
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'db',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': '',
+        'PORT': '',
+    }
+}
+```
