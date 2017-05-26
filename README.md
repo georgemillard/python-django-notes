@@ -306,3 +306,17 @@ contents = s3.list_objects(Bucket = s3_utils.bucket)
             for obj in contents['Contents']:
                 s3_utils.s3.delete_object(Bucket = s3_utils.bucket, Key = obj['Key'])
 ```
+
+### Postgres
+
+`pip install psycopg2`
+
+You will need to install Postgres on your machine, then:
+
+```
+psql -U postgres
+CREATE DATABASE 'db';
+CREATE USER 'user' WITH PASSWORD 'password';
+GRANT ALL PRIVILEGES ON DATABASE db TO user;
+ALTER USER user CREATEDB;
+```
