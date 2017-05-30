@@ -63,3 +63,12 @@ to install it:
 
 `sudo apt-get -y install supervisor`
 
+### Postgres
+
+```
+su - postgres
+createuser hive_user
+createdb hive_db
+psql -c "ALTER USER hive_user WITH PASSWORD 'password'"
+```
+
