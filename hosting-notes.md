@@ -123,3 +123,5 @@ exec ../path_to_virtual_env/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
 make the gunicorn_start file executable:
 
 `chmod u+x /home/user/bin/gunicorn_start`
+
+### Add ip address to django settings ALLOWED_HOSTS['...']
