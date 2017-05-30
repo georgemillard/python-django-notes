@@ -22,10 +22,10 @@ will create and checkout feature branch
 
 then add changes to feature and test. when you are ready to merge:
 
-`git checkout master`
-`git pull origin master'
-Make sure master branch is up to date
-`git merge feature`
-`git push origin master`
-
+```
+git checkout master
+git pull origin master
+git merge feature
+git push origin master
+```
 
