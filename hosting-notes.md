@@ -11,6 +11,17 @@ sudo apt-get update
 sudo apt-get -y upgrade
 ```
 
+some suggested packages:
+
+```
+sudo apt-get install 
+  build-essential
+  libssl-dev
+  libffi-dev
+  libpq-dev
+  python-dev
+```
+
 check python3 version:
 `python3 -V`
 
