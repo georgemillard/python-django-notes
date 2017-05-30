@@ -2,7 +2,11 @@
 
 ### Create a new user
 
-`adduser hive_user`
+```
+adduser hive_user
+gpasswd -a hive_user sudo
+su - hive_user
+```
 
 ### Pyhton setup
 
