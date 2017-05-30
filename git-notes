@@ -15,5 +15,17 @@ Set branch master to follow remote:
 `git branch`
 Show all branches, * indicates which is currently checked out
 
+`git checkout master`
+
+`git checkout -b feature`
+will create and checkout feature branch
+
+then add changes to feature and test. when you are ready to merge:
+
+`git checkout master`
 `git pull origin master'
 Make sure master branch is up to date
+`git merge feature`
+`git push origin master`
+
+
