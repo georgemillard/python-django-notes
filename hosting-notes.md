@@ -93,7 +93,7 @@ USER=user
 GROUP=group
 WORKERS=3
 TIMEOUT=120
-BIND_SOCKET=unix:/home/user/project/run/gunicorn.sock
+BIND_SOCKET=unix:/home/user/run/gunicorn.sock
 BIND_TCP=ip_address:8000
 DJANGO_SETTINGS_MODULE=project.settings
 DJANGO_WSGI_MODULE=project.wsgi
@@ -102,15 +102,15 @@ LOG_LEVEL=info
 echo "Starting $NAME"
 
 cd $DIR
-source ../bin/activate
+source ../path_to_virtual_env/bin/activate
 
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DIR:$PYTHONPATH
 
-# exec ../bin/gunicorn project.wsgi:application --bind 0.0.0.0:8000
-# exec ../bin/gunicorn project.wsgi:application --bind=unix:/home/user/project/run/gunicorn.sock
+# exec ../path_to_virtual_env/bin/gunicorn project.wsgi:application --bind 0.0.0.0:8000
+# exec ../path_to_virtual_env/bin/gunicorn project.wsgi:application --bind=unix:/home/user/project/run/gunicorn.sock
 
-exec ../bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
+exec ../path_to_virtual_env/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
   --name $NAME \
   --workers $WORKERS \
   --user=$USER \
@@ -119,3 +119,7 @@ exec ../bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
   --log-level=$LOG_LEVEL \
   --log-file=-
 ```
+
+make the gunicorn_start file executable:
+
+`chmod u+x /home/user/bin/gunicorn_start`
