@@ -55,3 +55,11 @@ to install it:
 
 `pip install -r requirements.txt`
 
+### NGINX
+
+`sudo apt-get -y install nginx`
+
+### Supervisor
+
+`sudo apt-get -y install supervisor`
+
