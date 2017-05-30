@@ -87,16 +87,16 @@ nb. TCP works, socket doesn't (502 error) I haven't yet worked out why this is..
 ```
 #!/bin/bash
 
-NAME="hive_mvp"
-DIR=/home/django_mvp/hive_mvp
-USER=django_mvp
-GROUP=django_mvp
+NAME="project_name"
+DIR=/home/user/project_name
+USER=user
+GROUP=group
 WORKERS=3
 TIMEOUT=120
-BIND_SOCKET=unix:/home/django_mvp/hive_mvp/run/gunicorn.sock
-BIND_TCP=188.166.159.218:8000
-DJANGO_SETTINGS_MODULE=hive_mvp.settings
-DJANGO_WSGI_MODULE=hive_mvp.wsgi
+BIND_SOCKET=unix:/home/user/project/run/gunicorn.sock
+BIND_TCP=ip_address:8000
+DJANGO_SETTINGS_MODULE=project.settings
+DJANGO_WSGI_MODULE=project.wsgi
 LOG_LEVEL=info
 
 echo "Starting $NAME"
@@ -107,8 +107,8 @@ source ../bin/activate
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DIR:$PYTHONPATH
 
-# exec ../bin/gunicorn hive_mvp.wsgi:application --bind 0.0.0.0:8000
-# exec ../bin/gunicorn hive_mvp.wsgi:application --bind=unix:/home/django_mvp/hive_mvp/run/gunicorn.sock
+# exec ../bin/gunicorn project.wsgi:application --bind 0.0.0.0:8000
+# exec ../bin/gunicorn project.wsgi:application --bind=unix:/home/user/project/run/gunicorn.sock
 
 exec ../bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
   --name $NAME \
