@@ -1,0 +1,19 @@
+### Git cheat sheet
+
+### Linking an existing local project to a remote github repository
+
+`git remote add origin https://github.com/georgemillard/The-Hive.git`
+
+Verify remote:
+`git remote -v`
+
+Set branch master to follow remote:
+`git branch --set-upstream-to=origin/master master`
+
+### Creating a new branch
+
+`git branch`
+Show all branches, * indicates which is currently checked out
+
+`git pull origin master'
+Make sure master branch is up to date
