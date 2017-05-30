@@ -65,7 +65,35 @@ to install it:
 
 ### Supervisor
 
-`sudo apt-get -y install supervisor`
+```
+sudo apt-get -y install supervisor
+cd ~
+mkdir logs
+touch logs/gunicorn-error.log
+sudo nano /etc/supervisor/conf.d/myproject.conf
+```
+
+myproject.conf:
+
+```
+[program:myproject]
+command=/home/user/bin/gunicorn_start
+user=user
+autostart=true
+autorestart=true
+redirect_stderr=true
+stdout_logfile=/home/user/logs/gunicorn-error.log
+```
+
+supervisor commands:
+
+```
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supercisorctl status
+
+sudo supervisorctl start/stop/restart [project]
+```
 
 ### Postgres
 
