@@ -34,3 +34,9 @@ activate environment:
 
 within a virtual environment you can use `pip` and `python` instead of `pip3` and `python3`
 
+to capture a virtual environment:
+`pip freeze > requirements.txt`
+
+to install it:
+`pip install -r requirements.txt`
+
