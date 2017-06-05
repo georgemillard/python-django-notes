@@ -29,3 +29,30 @@ git merge feature
 git push origin master
 ```
 
+### Working on a new feature while waiting for a pull request to be approved
+see https://stackoverflow.com/questions/35790561/working-while-waiting-for-pending-pr
+
+Open pull request for `feature-1`
+Create a new branch off the last feature branch:
+
+`git checkout -b feature-2 feature1`
+
+Work on new branch:
+
+```
+git status
+git add <file>
+git commit
+```
+
+Push changes:
+
+`git push -u origin feature-2`
+(-u sets up a remote tracking branch, so `git push` alone will work)
+
+Pull request approved, previous branch merged and deleted
+
+Rebase next branch onto master:
+
+`git rebase --onto master feature-2`
+
