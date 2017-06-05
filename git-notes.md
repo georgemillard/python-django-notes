@@ -35,7 +35,7 @@ see https://stackoverflow.com/questions/35790561/working-while-waiting-for-pendi
 Open pull request for `feature-1`
 Create a new branch off the last feature branch:
 
-`git checkout -b feature-2 feature1`
+`git checkout -b feature-2 feature-1`
 
 Work on new branch:
 
