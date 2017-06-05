@@ -208,6 +208,33 @@ A useful utility package. FieldTracker is particularly helpful for tracking fiel
 
 `from model_utils import FieldTracker`
 
+### UnitTests
+
+Delete `tests.py` from your app folder.
+Replace with a `tests` folder, and add an empty `__init__.py`
+Create a test file of the form `test*.py`:
+
+```
+from django.test import TestCase
+
+class ModelTest(TestCase):
+
+    def setUp(self):
+        # code to run before each test
+    def tearDown(self):
+        # code to run after each test
+
+    def my_test(self):
+        """
+        test description
+        """
+        # test code here ...
+        self.assertEqual(a, b)
+```
+
+Run tests:
+`python manage.py test myapp`
+
 ### Coverage.py
 To test code coverage
 
