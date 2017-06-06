@@ -362,3 +362,13 @@ DATABASES = {
     }
 }
 ```
+
+### Customizing the Django Admin
+
+Check out these links:
+
+https://www.youtube.com/watch?v=XphJRQ3AzMU
+
+https://medium.com/@hakibenita/how-to-turn-django-admin-into-a-lightweight-dashboard-a0e0bbf609ad
+
+https://medium.com/@hakibenita/how-to-add-custom-action-buttons-to-django-admin-8d266f5b0d41
