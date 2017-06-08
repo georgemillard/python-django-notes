@@ -363,6 +363,14 @@ DATABASES = {
 }
 ```
 
+`\l` list databases
+
+`\dt` list tables in database
+
+`\q` quit
+
+`\du` list users
+
 ### Customizing the Django Admin
 
 Check out these links:
