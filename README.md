@@ -383,6 +383,10 @@ https://medium.com/@hakibenita/how-to-add-custom-action-buttons-to-django-admin-
 
 ### Django REST Framework
 
+Check out this great tutorial:
+
+http://polyglot.ninja/django-building-rest-apis/
+
 ```
 pip install djangorestframework
 
