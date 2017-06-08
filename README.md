@@ -448,3 +448,32 @@ Create a user programmatically:
 >>> user.is_staff=True
 >>> user.save()
 ```
+
+Settings.py:
+
+```
+INSTALLED_APPS = [
+...
+    rest_framework.authtoken
+...
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
+```
+
+Permissions: (views.py)
+
+```
+from rest_framework.permissions import IsAuthenticated
+
+class SubscriberViewSet(ModelViewSet):
+    serializer_class = SubscriberSerializer
+    queryset = Subscriber.objects.all()
+    permission_classes = (IsAuthenticated,)
+```
