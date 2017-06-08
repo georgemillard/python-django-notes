@@ -380,3 +380,59 @@ https://www.youtube.com/watch?v=XphJRQ3AzMU
 https://medium.com/@hakibenita/how-to-turn-django-admin-into-a-lightweight-dashboard-a0e0bbf609ad
 
 https://medium.com/@hakibenita/how-to-add-custom-action-buttons-to-django-admin-8d266f5b0d41
+
+### Django REST Framework
+
+```
+pip install djangorestframework
+
+INSTALLED_APPS = [
+...
+rest_framework
+...
+]
+```
+
+##### Subscribers Example
+
+```
+models.py:
+
+class Subscriber(models.Model):
+    name = models.CharField("Name", max_length=50)
+    age = models.IntegerField("Age")
+    email = models.EmailField("Email")
+    
+
+serializers.py:
+
+from rest_framework import serializers
+from . import models
+
+class SubscriberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Subscriber
+        fields = '__all__'
+	
+views.py:
+
+from rest_framework.viewsets import ModelViewSet
+
+from .serializers import SubscriberSerializer
+from .models import Subscriber
+
+class SubscriberViewSet(ModelViewSet):
+    serializer_class = SubscriberSerializer
+    queryset = Subscriber.objects.all()
+
+urls.py:
+
+from rest_framework.routers import SimpleRouter
+
+router = SimpleRouter()
+router.register("subscribers", SubscriberViewSet)
+
+urlpatterns = router.urls
+```
+
+#### That is all!!!
