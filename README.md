@@ -436,3 +436,15 @@ urlpatterns = router.urls
 ```
 
 #### That is all!!!
+
+### Authentication
+
+Create a user programmatically:
+
+```
+>>> from django.contrib.auth.models import User
+>>> user=User.objects.create_user('foo', password='bar')
+>>> user.is_superuser=True
+>>> user.is_staff=True
+>>> user.save()
+```
