@@ -477,3 +477,44 @@ class SubscriberViewSet(ModelViewSet):
     queryset = Subscriber.objects.all()
     permission_classes = (IsAuthenticated,)
 ```
+
+JSON Web Tokens:
+
+```
+pip install djangorestframework-jwt
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+    	...
+    	'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+	...
+    )
+}
+```
+
+urls.py:
+
+```
+from rest_framework_jwt.views import obtain_jwt_token
+
+urlpatterns = router.urls + [
+    url(r'^jwt-auth/', obtain_jwt_token),
+]
+```
+
+Obtain a token:
+
+```
+ curl --request POST \
+  --url http://localhost:8000/api/jwt-auth/ \
+  --header 'content-type: application/json' \
+  --data '{"username": "user", "password": "pw"}'
+
+{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6IiIsInVzZXJuYW1lIjoidGVzdF91c2VyIiwiZXhwIjoxNDk1OTkyOTg2fQ.sWSzdiBNNcXDqhcdcjWKjwpPsVV7tCIie-uit_Yz7W0"}
+```
+
+Use token to access collection:
+
+```
+curl -H "Content-Type: application/json" -H "Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6IiIsInVzZXJuYW1lIjoidGVzdF91c2VyIiwiZXhwIjoxNDk1OTkyOTg2fQ.sWSzdiBNNcXDqhcdcjWKjwpPsVV7tCIie-uit_Yz7W0" -X GET  http://localhost:8000/api/subscribers/
+```
