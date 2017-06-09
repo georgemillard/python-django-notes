@@ -29,13 +29,21 @@ git merge feature
 git push origin master
 ```
 
-### Working on a new feature while waiting for a pull request to be approved
-see https://stackoverflow.com/questions/35790561/working-while-waiting-for-pending-pr
+### Git Stash
 
-Open pull request for `feature-1`
-Create a new branch off the last feature branch:
+```
+git stash
+git stash list
+git stash apply
+```
 
-`git checkout -b feature-2 feature-1`
+### Feature branch
+
+```
+git checkout master
+git pull
+git checkout -b feature
+```
 
 Work on new branch:
 
@@ -47,12 +55,21 @@ git commit
 
 Push changes:
 
-`git push -u origin feature-2`
+`git push -u origin feature`
 (-u sets up a remote tracking branch, so `git push` alone will work)
 
-Pull request approved, previous branch merged and deleted
+Pull Request...
 
-Rebase next branch onto master:
+Checkout master and pull changes:
 
-`git rebase --onto master feature-2`
+```
+git checkout master
+git pull
+```
+
+Delete feature branch:
+
+```
+git branch -d feature
+```
 
