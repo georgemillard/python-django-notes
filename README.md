@@ -208,6 +208,18 @@ A useful utility package. FieldTracker is particularly helpful for tracking fiel
 
 `from model_utils import FieldTracker`
 
+Note that FieldTrackers track Foreign Key fields by db_column name, not model field name.
+
+To find the db_column name of your fields:
+
+```
+>>> for field in MyModel._meta.fields:
+        field.get_attname_column 
+('id', 'id')
+('name', 'name')
+('parent_id', 'parent_id')
+```
+
 ### UnitTests
 
 Delete `tests.py` from your app folder.
@@ -218,7 +230,7 @@ Create a test file of the form `test*.py`:
 from django.test import TestCase
 
 class ModelTest(TestCase):
-
+    
     def setUp(self):
         # code to run before each test
     def tearDown(self):
