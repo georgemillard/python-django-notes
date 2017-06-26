@@ -235,6 +235,10 @@ class ModelTest(TestCase):
 Run tests:
 `python manage.py test myapp`
 
+
+Run a specific test:
+`python manage.py test myapp.tests.test_file.test_class.test_function`
+
 ### Coverage.py
 To test code coverage
 
