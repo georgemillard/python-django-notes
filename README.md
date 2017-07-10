@@ -391,6 +391,8 @@ DATABASES = {
 
 `\conninfo` Connection info
 
+`DROP DATABASE database_name;` To delete a database (not the one currently connected) 
+
 `DELETE FROM django_migrations WHERE app='your-app-name';` Delete all migrations
 
 ### Customizing the Django Admin
