@@ -387,6 +387,8 @@ DATABASES = {
 
 `\du` list users
 
+`\connect DBNAME` connect to a database
+
 ### Customizing the Django Admin
 
 Check out these links:
