@@ -389,6 +389,10 @@ DATABASES = {
 
 `\connect DBNAME` connect to a database
 
+`\conninfo` Connection info
+
+`DELETE FROM django_migrations WHERE app='your-app-name';` Delete all migrations
+
 ### Customizing the Django Admin
 
 Check out these links:
