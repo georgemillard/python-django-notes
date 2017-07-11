@@ -554,11 +554,14 @@ Auto-setting uploaded_by and uploaded_at fields
 
 settings.py:
 
+```
 TIME_ZONE = 'Europe/London'
 USE_TC = True
+```
+
 
 admin.py:
-
+```
 MyModelAdmin(admin.ModelAdmin):
 
 from django.conf import settings
@@ -570,4 +573,4 @@ def save_model(self, request, obj, form, change):
             obj.uploaded_by = request.user
             obj.uploaded_at = datetime.now(timezone(settings.TIME_ZONE))
             super(MyModelAdmin, self).save_model(request, obj, form, change)
-
+```
