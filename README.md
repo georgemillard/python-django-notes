@@ -546,3 +546,28 @@ Use token to access collection:
 ```
 curl -H "Content-Type: application/json" -H "Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6IiIsInVzZXJuYW1lIjoidGVzdF91c2VyIiwiZXhwIjoxNDk1OTkyOTg2fQ.sWSzdiBNNcXDqhcdcjWKjwpPsVV7tCIie-uit_Yz7W0" -X GET  http://localhost:8000/api/subscribers/
 ```
+
+
+### Timezones
+
+Auto-setting uploaded_by and uploaded_at fields
+
+settings.py:
+
+TIME_ZONE = 'Europe/London'
+USE_TC = True
+
+admin.py:
+
+MyModelAdmin(admin.ModelAdmin):
+
+from django.conf import settings
+from datetime import datetime
+from pytz import timezone
+
+def save_model(self, request, obj, form, change):
+        if not change:
+            obj.uploaded_by = request.user
+            obj.uploaded_at = datetime.now(timezone(settings.TIME_ZONE))
+            super(MyModelAdmin, self).save_model(request, obj, form, change)
+
