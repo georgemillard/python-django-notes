@@ -58,6 +58,23 @@ INSTALLED_APPS = (
 )
 ```
 
+`python manage.py shell_plus`
+
+Launches a Python shell with all your django models imported
+
+`python manage.py runscript <script>`
+
+Runs a Python script within your django environment. Create a folder, `scripts`, in your app. 
+
+Create your script eg. `myscript.py` within this folder.
+
+```
+def run():
+    # do something here...
+```
+
+Run with `python manage.py runscript myscript --traceback`
+
 ### Using django-storages with Amazon S3 Storage
 
 AWS S3 Bucket Policy:
