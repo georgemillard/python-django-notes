@@ -21,5 +21,21 @@ Add:
 
 Add to sudo group: `adduser example_user sudo`
 
+#### Setup 
+
+On Mac:
+
+`ssh-keygen -b 4096`
+
+On Linux:
+
+`mkdir ~/.ssh`
+`nano ~/.ssh/authorized_keys`
+
+On Mac:
+
+`scp ~/.ssh/id_rsa.pub example_user@ip_address:~/.ssh/authorized_keys`
+
+Then you can log in without having to enter a password!
 
 
