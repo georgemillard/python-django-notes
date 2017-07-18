@@ -19,5 +19,7 @@ Add:
 
 `adduser example_user`
 
+Add to sudo group: `adduser example_user sudo`
+
 
 
