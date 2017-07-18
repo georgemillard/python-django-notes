@@ -40,8 +40,9 @@ Then you can log in without having to enter a password!
 
 #### SSH Demon settings
 
-`nano /etc/ssh/sshd_config`
+`sudo nano /etc/ssh/sshd_config`
 
 Set `PermitRootLogin` and `PasswordAuthentication` to `no`
 
+Then `sudo service ssh restart`
 
