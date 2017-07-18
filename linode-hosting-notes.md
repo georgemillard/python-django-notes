@@ -11,3 +11,9 @@ nano /etc/hosts
 Add:
 `ip-address   hostname.example.com  hostname`
 
+#### Configure timezone
+
+`dpkg-reconfigure tzdata`
+
+
+
