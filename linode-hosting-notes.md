@@ -21,7 +21,7 @@ Add:
 
 Add to sudo group: `adduser example_user sudo`
 
-#### Setup 
+#### Setup SSH keys
 
 On Mac:
 
@@ -46,3 +46,8 @@ Set `PermitRootLogin` and `PasswordAuthentication` to `no`
 
 Then `sudo service ssh restart`
 
+#### Check running processes
+
+`sudo netstat -tulpn`
+
+End a process with `sudo apt-get purge program_name`
