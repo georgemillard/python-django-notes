@@ -15,5 +15,9 @@ Add:
 
 `dpkg-reconfigure tzdata`
 
+#### Add normal user
+
+`adduser example_user`
+
 
 
