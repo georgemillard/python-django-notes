@@ -51,3 +51,15 @@ Then `sudo service ssh restart`
 `sudo netstat -tulpn`
 
 End a process with `sudo apt-get purge program_name`
+
+#### Fail2Ban
+
+Default settings `/etc/fail2ban/fail2ban.conf`
+
+Override by copying and editing to `/etc/fail2ban/fail2ban.local`
+
+Default logs `/var/log/fail2ban.log`
+
+To run commands in a client `sudo fail2ban-client -i`
+
+Commands include `status, start, reload, stop, get logtarget, exit...`
