@@ -62,12 +62,14 @@ Default settings `/etc/fail2ban/fail2ban.conf`
 
 Override by copying and editing to `/etc/fail2ban/fail2ban.local`
 
-Or override jail.conf:
-
-`awk '{ printf "# "; print; }' /etc/fail2ban/jail.conf | sudo tee /etc/fail2ban/jail.local`
-
 Default logs `/var/log/fail2ban.log`
 
 To run commands in a client `sudo fail2ban-client -i`
 
 Commands include `status, start, reload, stop, get logtarget, exit...`
+
+Can also override jail.conf:
+
+`awk '{ printf "# "; print; }' /etc/fail2ban/jail.conf | sudo tee /etc/fail2ban/jail.local`
+
+`sudo apt-get install sendmail`
