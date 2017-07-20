@@ -50,6 +50,10 @@ Then `sudo service ssh restart`
 
 `sudo netstat -tulpn`
 
+`ps aux | less`
+
+`pgrep <process_name>
+
 End a process with `sudo apt-get purge program_name`
 
 #### Fail2Ban
