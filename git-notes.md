@@ -73,3 +73,7 @@ Delete feature branch:
 git branch -d feature
 ```
 
+#### Diff between two branches
+
+`git diff branch_1..branch_2`
+
