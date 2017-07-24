@@ -214,3 +214,17 @@ server {
 Symlink to this file to nginx can see it:
 
 `sudo ln -s ~/path/to/your/mysite/mysite_nginx.conf /etc/nginx/sites-enabled/`
+
+Set static files setting in Django settings.py:
+
+`STATIC_ROOT = os.path.join(BASE_DIR, "static/")`
+
+Run `python manage.py collectstatic`
+
+Upload a picture to your Django project media directory:
+
+`/path/to/Django/Project/media/pic.jpg`
+
+Test if you can access it through nginx:
+
+`<ip_address>:80/media/pic.jpg`
