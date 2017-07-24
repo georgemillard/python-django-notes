@@ -141,3 +141,12 @@ Test Django Project:
 If that works, then test wtih uWSGI:
 
 `uwsgi --http :8000 --module mysite.wsgi --virtualenv /path/to/virtual/env/`
+
+### nginx
+
+```
+sudo apt-get install nginx
+sudo /etc/init.d/nginx start 
+```
+
+Test by visiting `<ip_address>:80` and you should see Welcome to nginx!
