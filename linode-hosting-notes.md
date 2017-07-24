@@ -228,3 +228,9 @@ Upload a picture to your Django project media directory:
 Test if you can access it through nginx:
 
 `<ip_address>:80/media/pic.jpg`
+
+Now we can run nginx with uwsgi:
+
+`ct$ uwsgi --socket :8001 --module test_project.wsgi --virtualenv /home/gbmillard/projects/virtualenvs/asset_manager_venv/`
+
+Visiting our django app on `<ip_address>:8000` and our test_project.wsgi on `<ip_address>:8001`. This will not be visible in the browser but the uwsgi terminal will show output for the request.
