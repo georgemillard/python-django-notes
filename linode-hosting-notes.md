@@ -210,3 +210,7 @@ server {
     }
 }
 ```
+
+Symlink to this file to nginx can see it:
+
+`sudo ln -s ~/path/to/your/mysite/mysite_nginx.conf /etc/nginx/sites-enabled/`
