@@ -247,9 +247,9 @@ Need to set permissions on test_project to 777, and on mysite.sock to 777 (withi
 # the base directory (full path)
 chdir           = /home/gbmillard/projects/test_project
 # Django's wsgi file
-wsgi-file          = test_project/wsgi.py
+wsgi-file       = /home/gbmillard/projects/test_project/test_project/wsgi.py
 # the virtualenv (full path)
-#home            = /home/gbmillard/projects/virtualenvs/asset_manager_venv
+home            = /home/gbmillard/projects/virtualenvs/asset_manager_venv
 
 # process-related settings
 # master
@@ -257,7 +257,7 @@ master          = true
 # maximum number of worker processes
 processes       = 10
 # the socket (use the full path to be safe
-socket          = /home/gbmillard/projects/test_project/mysite.sock
+socket          = /home/gbmillard/projects/test_project/sockets/mysite.sock
 # ... with appropriate permissions - may be needed
 chmod-socket    = 777
 uid = gbmillard
@@ -267,3 +267,13 @@ vacuum          = true
 ```
 
 Then we can run with `uwsgi --ini mysite_uwsgi.ini`
+
+__Solution!!!__
+
+The uid/gid flags from the .ini file were not being applied (verify by checking the permissions on mysite.sock while uwsgi is running)
+
+To get the flags to apply, uwsgi must be run with SUDO!
+
+`sudo uwsgi --ini mysite_uwsgi.ini`
+
+The .ini can be updated: `chmod = 664` and all is well :-)
