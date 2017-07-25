@@ -225,7 +225,9 @@ Upload a picture to your Django project media directory:
 
 `/path/to/Django/Project/media/pic.jpg`
 
-Test if you can access it through nginx:
+Restart nginx, then nest if you can access it through nginx:
+
+`sudo /etc/init.d/nginx restart` or `stop`, `start`
 
 `<ip_address>:80/media/pic.jpg`
 
@@ -235,7 +237,24 @@ Now we can run nginx with uwsgi:
 
 Visiting our django app on `<ip_address>:8000` and our test_project.wsgi on `<ip_address>:8001`. This will not be visible in the browser but the uwsgi terminal will show output for the request.
 
+#### Flipping sockets!
+
+Edit `mysitenginx.conf`:
+
+```
+server unix:///path/to/your/mysite/mysite.sock; # for a file socket
+# server 127.0.0.1:8001; # for a web port socket (we'll use this first)
+```
+
+Then try:
+
+`uwsgi --socket mysite.sock --wsgi-file test.py`
+
 #### 502 Bad Gateway Error!!!
+
+Using uwsgi with a .ini file (see below):
+
+`uwsgi --ini mysite_uwsgi.ini`
 
 Need to set permissions on test_project to 777, and on mysite.sock to 777 (within the ini file):
 
