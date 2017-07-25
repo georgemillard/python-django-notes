@@ -277,3 +277,10 @@ To get the flags to apply, uwsgi must be run with SUDO!
 `sudo uwsgi --ini mysite_uwsgi.ini`
 
 The .ini can be updated: `chmod = 664` and all is well :-)
+
+#### Emperor Mode
+
+Create a folder to store config files: `sudo mkdir /etc/uwsgi/vassals/`
+Create a simlink: `sudo ln -s /path/to/your/mysite/mysite_uwsgi.ini /etc/uwsgi/vassals/`
+Run uwsgi in emperor mode: `sudo uwsgi --emperor /etc/uwsgi/vassals`
+If your .ini does not specify uid and gid per project, add: `--uid www-data --gid www-data`
