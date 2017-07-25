@@ -234,3 +234,36 @@ Now we can run nginx with uwsgi:
 `ct$ uwsgi --socket :8001 --module test_project.wsgi --virtualenv /home/gbmillard/projects/virtualenvs/asset_manager_venv/`
 
 Visiting our django app on `<ip_address>:8000` and our test_project.wsgi on `<ip_address>:8001`. This will not be visible in the browser but the uwsgi terminal will show output for the request.
+
+#### 502 Bad Gateway Error!!!
+
+Need to set permissions on test_project to 777, and on mysite.sock to 777 (within the ini file):
+
+```
+# mysite_uwsgi.ini file
+[uwsgi]
+
+# Django-related settings
+# the base directory (full path)
+chdir           = /home/gbmillard/projects/test_project
+# Django's wsgi file
+wsgi-file          = test_project/wsgi.py
+# the virtualenv (full path)
+#home            = /home/gbmillard/projects/virtualenvs/asset_manager_venv
+
+# process-related settings
+# master
+master          = true
+# maximum number of worker processes
+processes       = 10
+# the socket (use the full path to be safe
+socket          = /home/gbmillard/projects/test_project/mysite.sock
+# ... with appropriate permissions - may be needed
+chmod-socket    = 777
+uid = gbmillard
+gid = gbmillard
+# clear environment on exit
+vacuum          = true
+```
+
+Then we can run with `uwsgi --ini mysite_uwsgi.ini`
