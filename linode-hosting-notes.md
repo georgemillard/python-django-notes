@@ -288,3 +288,36 @@ Run uwsgi in emperor mode: `sudo uwsgi --emperor /etc/uwsgi/vassals`
 
 If your .ini does not specify uid and gid per project, add: `--uid www-data --gid www-data`
 
+#### With Supervisor
+
+`sudo apt-get install supervisor`
+
+To restart: `sudo service supervisor restart`
+
+Create a .conf file:
+
+`/etc/supervisor/conf.d/uwsgi.conf`:
+
+```
+[program:uwsgi]
+command=sudo uwsgi --emperor /etc/uwsgi/vassals
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/uwsgi.err.log
+stdout_logfile=/var/log/uwsgi.out.log
+```
+
+After making any changes to a config file:
+
+```
+sudo supervisor ctl reread
+sudo supervisorctl update
+```
+
+Managing processes:
+
+```
+sudo supervisorctl
+>start/stop/restart <process_name>
+exit
+```
