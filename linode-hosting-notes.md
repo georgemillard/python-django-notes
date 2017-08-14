@@ -261,7 +261,8 @@ Need to set permissions on test_project to 777, and on mysite.sock to 777 (withi
 ```
 # mysite_uwsgi.ini file
 [uwsgi]
-
+#set DJANGO_SETTINGS_MODULE here if needed
+env=DJANGO_SETTINGS_MODULE=test_project/settings_base
 # Django-related settings
 # the base directory (full path)
 chdir           = /home/gbmillard/projects/test_project
@@ -278,7 +279,7 @@ processes       = 10
 # the socket (use the full path to be safe
 socket          = /home/gbmillard/projects/test_project/sockets/mysite.sock
 # ... with appropriate permissions - may be needed
-chmod-socket    = 777
+chmod-socket    = 664
 uid = gbmillard
 gid = gbmillard
 # clear environment on exit
