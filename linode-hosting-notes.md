@@ -90,6 +90,21 @@ postgres=# GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
 postgres=# \q
 ```
 
+Useful postgres commands:
+
+`\q` - quit
+`\c <database_name>` - connect to database <database_name>
+`\d <table_name>` - show <table_name> definition
+`\dt` - list tables
+`\l` - list databases
+`\du` - list users
+
+See: 
+https://gist.githubusercontent.com/Kartones/dd3ff5ec5ea238d4c546/raw/4f3d0ae1188128168758291b07382294f7f9922a/postgres-cheatsheet.md
+
+
+#### Venv + Django
+
 Install virtualenv `sudo pip3 install virtualenv`
 Create a new venv `virtualenv myprojectenv`
 Install Django `pip install django psycopg2`
@@ -348,6 +363,7 @@ exit
 `sudo apt-get install ufw`
 
 https://www.linode.com/docs/security/firewalls/configure-firewall-with-ufw
+https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands
 
 ```
 sudo ufw default allow outgoing
@@ -358,5 +374,5 @@ sudo ufw allow http
 sudo ufw allow https
 
 sudo ufw status verbose
-```
 sudo ufw disable/enable
+```
