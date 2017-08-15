@@ -341,3 +341,22 @@ sudo supervisorctl
 >start/stop/restart <process_name>
 exit
 ```
+
+
+#### UFW
+
+`sudo apt-get install ufw`
+
+https://www.linode.com/docs/security/firewalls/configure-firewall-with-ufw
+
+```
+sudo ufw default allow outgoing
+sudo ufw default deny incoming
+
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+
+sudo ufw status verbose
+```
+sudo ufw disable/enable
