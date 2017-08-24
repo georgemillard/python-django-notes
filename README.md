@@ -418,6 +418,8 @@ DATABASES = {
 2. DROP, CREATE and GRANT PRIVILEGES TO DB
 3. python manage.py makemigrations, migrate
 
+see https://simpleisbetterthancomplex.com/tutorial/2016/07/26/how-to-reset-migrations.html
+
 ### Customizing the Django Admin
 
 Check out these links:
