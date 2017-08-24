@@ -412,6 +412,12 @@ DATABASES = {
 
 `DELETE FROM django_migrations WHERE app='your-app-name';` Delete all migrations
 
+#### Drop DB and redo migrations (if they have become muddled!):
+
+1. Delete everything in your app/migrations folder (except __init__.py)
+2. DROP, CREATE and GRANT PRIVILEGES TO DB
+3. python manage.py makemigrations, migrate
+
 ### Customizing the Django Admin
 
 Check out these links:
