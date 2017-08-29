@@ -77,3 +77,10 @@ git branch -d feature
 
 `git diff branch_1..branch_2`
 
+### Useful git commands
+
+`git reset <file>`
+`git reset`
+
+Undo `git add <file>` without losing changes.
+
