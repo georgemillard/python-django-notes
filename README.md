@@ -674,4 +674,38 @@ https://github.com/django/django/blob/master/django/forms/widgets.py
 The widget templates are in:
 django/contrib/admin/templates/admin/widgets/
 
+```
+settings.py:
+
+INSTALLED_APPS = [
+	...
+	'django.forms',
+	...
+]
+
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
+
+
+myapp/widgets.py:
+
+from django import forms
+
+class MyCustomWidget(forms.widgets.ClearableFileInput):
+    template_name = 'widgets/my_custom_widget.html'
+    
+    
+myapp/forms.py:
+
+class MyModelForm(forms.ModelForm):
+    class Meta:
+        model = MyModel
+        widgets = {
+            'file': widgets.MyCustomWidget,
+        }
+```
+
+Create template folder and template:
+
+`myapp/templates/widgets/my_custom_widget.html`
+
 
