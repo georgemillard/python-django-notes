@@ -599,3 +599,45 @@ def save_model(self, request, obj, form, change):
             obj.uploaded_at = datetime.now(timezone(settings.TIME_ZONE))
             super(MyModelAdmin, self).save_model(request, obj, form, change)
 ```
+
+#### Customizing admin templates 
+
+Django admin templates can be found here:
+https://github.com/django/django/tree/master/django/contrib/admin/templates/admin
+
+So far I have used list_view, which shows the list of all models of a given type, and change_view, which is the edit fields view for a given model.
+
+```
+settings.py:
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        ...
+    },
+]
+```
+
+Create a `templates` folder within your app. Then, to override templates on an model specific basis, create a folder for each model:
+
+`myapp/templates/admin/myapp/mymodel`
+
+Put a copy of the required template in this folder, and edit as required. This local copy will now take precedence.
+
+Note it is also possible to extend a template rather than copy it, and override specific blocks.
+
+
+#### Creating a custom filter
+
+
+#### Creating a custom widget/template
+
+Django admin widgets are located at:
+https://github.com/django/django/blob/master/django/forms/widgets.py
+
+The widget templates are in:
+django/contrib/admin/templates/admin/widgets/
+
+
