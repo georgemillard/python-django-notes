@@ -631,6 +631,40 @@ Note it is also possible to extend a template rather than copy it, and override 
 
 #### Creating a custom filter
 
+Create a directory for custom filters:
+
+`myapp/templatetags/`
+
+Create a file to hold your app filters:
+
+```
+myapp_filters.py:
+
+from django import template
+
+register = template.Library()
+
+@register.filter
+def show_root_level_folders_only(cl):
+    """
+    cl is a variable holding a Change List; the list of model instances.
+    This function filters the Change List to remove non-root elements.
+    """
+    query_set = cl.result_list
+    for folder in query_set:
+        if folder.parent != None:
+            query_set = query_set.exclude(pk=folder.id)
+    cl.result_list = query_set
+    return cl
+```
+
+Use the filter in your template. In this example, to remove non-root elements from a list, `cl`:
+
+```
+change_list.html:
+
+{{ cl|show_root_level_folders_only }}
+```
 
 #### Creating a custom widget/template
 
