@@ -1,5 +1,7 @@
 # Hosting a Django project on Linode
 
+This guide has been written for Ubuntu 16.04
+
 #### Configure hostname
 
 ```
@@ -89,7 +91,12 @@ postgres=# ALTER ROLE myprojectuser SET timezone TO 'UTC';
 postgres=# GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
 postgres=# \q
 ```
-
+##### Sidenote
+On certain systems postgres gives this error: "FATAL:  Peer authentication failed for user". This is caused by postgres trying to authenticate via your local user password, to get around this, modify the config file at `/etc/postgresql/9.5/main/pg_hba.conf` from:
+`local   all         postgres                          peer`
+to:
+`local   all         postgres                          md5`
+save this, restart the service with `sudo service postgresql restart` and it should be good to go.
 Useful postgres commands:
 
 `\q` - quit
@@ -99,7 +106,7 @@ Useful postgres commands:
 `\l` - list databases
 `\du` - list users
 
-See: 
+See:
 https://gist.githubusercontent.com/Kartones/dd3ff5ec5ea238d4c546/raw/4f3d0ae1188128168758291b07382294f7f9922a/postgres-cheatsheet.md
 
 
@@ -161,7 +168,7 @@ If that works, then test wtih uWSGI:
 
 ```
 sudo apt-get install nginx
-sudo /etc/init.d/nginx start 
+sudo /etc/init.d/nginx start
 ```
 
 Test by visiting `<ip_address>:80` and you should see Welcome to nginx!
