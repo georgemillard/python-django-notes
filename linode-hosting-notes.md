@@ -92,11 +92,17 @@ postgres=# GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
 postgres=# \q
 ```
 ##### Sidenote
-On certain systems postgres gives this error: "FATAL:  Peer authentication failed for user". This is caused by postgres trying to authenticate via your local user password, to get around this, modify the config file at `/etc/postgresql/9.5/main/pg_hba.conf` from:
+On certain systems postgres gives this error: "FATAL:  Peer authentication failed for user". 
+This is caused by postgres trying to authenticate via your local user password, to get around this, modify the config file at `/etc/postgresql/9.5/main/pg_hba.conf` from:
+
 `local   all         postgres                          peer`
+
 to:
+
 `local   all         postgres                          md5`
-save this, restart the service with `sudo service postgresql restart` and it should be good to go.
+
+Save the pg_hba_conf file, restart the service with `sudo service postgresql restart` and it should be good to go.
+
 Useful postgres commands:
 
 `\q` - quit
