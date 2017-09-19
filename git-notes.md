@@ -29,6 +29,9 @@ git merge feature
 git push origin master
 ```
 
+`git checkout --track origin/branch`
+Also useful for creating a local version of a remote branch...
+
 ### Git Stash
 
 ```
