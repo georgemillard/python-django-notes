@@ -103,14 +103,22 @@ to:
 
 Save the pg_hba_conf file, restart the service with `sudo service postgresql restart` and it should be good to go.
 
-Useful postgres commands:
+###### Useful postgres commands:
+
+ALTER USER Postgres WITH PASSWORD '<newpassword>';
 
 `\q` - quit
+
 `\c <database_name>` - connect to database <database_name>
+
 `\d <table_name>` - show <table_name> definition
+
 `\dt` - list tables
+
 `\l` - list databases
+
 `\du` - list users
+
 
 See:
 https://gist.githubusercontent.com/Kartones/dd3ff5ec5ea238d4c546/raw/4f3d0ae1188128168758291b07382294f7f9922a/postgres-cheatsheet.md
