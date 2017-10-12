@@ -232,11 +232,11 @@ server {
 
     # Django media
     location /media  {
-        alias /path/to/your/mysite/media;  # your Django project's media files - amend as required
+        root /path/to/your/mysite;  # path to folder containing /media folder
     }
 
     location /static {
-        alias /path/to/your/mysite/static; # your Django project's static files - amend as required
+        root /path/to/your/mysite; # path to folder containing /static folder
     }
 
     # Finally, send all non-media requests to the Django server.
@@ -265,7 +265,7 @@ Restart nginx, then nest if you can access it through nginx:
 
 `sudo /etc/init.d/nginx restart` or `stop`, `start`
 
-`<ip_address>:80/media/pic.jpg`
+`<ip_address>:8000/media/pic.jpg`
 
 Now we can run nginx with uwsgi:
 
