@@ -157,7 +157,8 @@ python manage.py runserver 0.0.0.0:8000
 
 #### uWSGI
 
-`pip install uwgsi`
+##### (install system wide - we will need this later to run uwsgi with sudo)
+`sudo pip install uwgsi`
 
 Create a test file:
 
