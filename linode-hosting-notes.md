@@ -367,7 +367,7 @@ stdout_logfile=/var/log/uwsgi.out.log
 After making any changes to a config file:
 
 ```
-sudo supervisor ctl reread
+sudo supervisorctl reread
 sudo supervisorctl update
 ```
 
