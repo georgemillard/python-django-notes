@@ -8,8 +8,8 @@
 
 #### Show databases
 
-`show databases`
+`show databases;`
 
 #### Change user password
 
-`set password for '\<username\>'@'\<host\>' = password('\<password\>');
+`set password for '\<username\>'@'\<host\>' = password('\<password\>');`
