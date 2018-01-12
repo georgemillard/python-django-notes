@@ -83,7 +83,13 @@ git branch -d feature
 ### Useful git commands
 
 `git reset <file>`
+
 `git reset`
+
+`git log --oneline`
+
+`git reset <commit hash>`
+
 
 Undo `git add <file>` without losing changes.
 
