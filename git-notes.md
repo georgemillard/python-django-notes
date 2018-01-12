@@ -86,10 +86,10 @@ git branch -d feature
 
 `git reset`
 
+Undo `git add <file>` without losing changes.
+
 `git log --oneline`
 
 `git reset <commit hash>`
 
-
-Undo `git add <file>` without losing changes.
-
+Reset to earlier commit
