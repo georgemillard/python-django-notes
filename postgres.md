@@ -30,7 +30,9 @@ Save the pg_hba_conf file, restart the service with sudo service postgresql rest
 #### Useful postgres commands ####
 
 ```
-ALTER USER Postgres WITH PASSWORD '';
+ALTER USER Postgres WITH PASSWORD '<password>';
+
+ALTER USER <user_name> CREATEDB;
 
 \q - quit
 
