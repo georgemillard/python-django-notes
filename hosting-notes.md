@@ -153,3 +153,10 @@ make the gunicorn_start file executable:
 `chmod u+x /home/user/bin/gunicorn_start`
 
 ### Add ip address to django settings ALLOWED_HOSTS['...']
+
+### Install Nodejs
+```
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+node --version
+```
