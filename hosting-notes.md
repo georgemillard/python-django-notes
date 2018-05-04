@@ -160,3 +160,19 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 node --version
 ```
+
+### Add node process to Supervisor
+```
+/etc/supervisor/conf.d/node-project.conf
+
+[program:node-project]
+directory=/path/to/node/project/dir #containing package.json
+command=npm start --production
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/node-project.err.log
+```
+
+`sudo supervisorctl`
+`reread`
+`update`
