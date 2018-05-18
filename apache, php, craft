@@ -1,0 +1,9 @@
+
+install mysql module
+sudo apt-get install php7.1-mysql
+
+delete ';' from /etc/php7.1/apache2/php.ini
+;extension=pdo_mysql
+
+enable mysql module
+sudo phpenmod pdo_mysql
