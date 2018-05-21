@@ -24,7 +24,12 @@ list all available modules
 `apt-cache pkgnames | grep php7.1` or `apt-cache search php7.1`
 
 install mysql module
-sudo apt-get install php7.1-mysql
+`sudo apt-get install php7.1-mysql`
 
 enable mysql module
-sudo phpenmod pdo_mysql
+`sudo phpenmod pdo_mysql`
+
+modules can also be enabled with:
+`a2enmod <module_name>`
+
+Some sites suggest removing the `;` before the extension in the php.ini files (/etc/php/7.1/apache/php.ini) but this causes problems as the dll's are compiled for Windows - not 100% sure about this one :-)
