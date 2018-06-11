@@ -13,3 +13,7 @@
 #### Change user password
 
 `set password for '<username>'@'<host>' = password('<password>');`
+
+#### Grant user privileges
+
+`mysql> GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'localhost';`
