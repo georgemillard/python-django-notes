@@ -16,4 +16,8 @@
 
 #### Grant user privileges
 
-`mysql> GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'localhost';`
+`GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'localhost';`
+
+#### Show user privileges
+
+`SHOW GRANTS FOR 'user'@'localhost';
