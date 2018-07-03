@@ -276,7 +276,7 @@ Restart nginx, then test if you can access it through nginx:
 
 Now we can run nginx with uwsgi:
 
-`ct$ uwsgi --socket :8001 --module test_project.wsgi --virtualenv /home/gbmillard/projects/virtualenvs/asset_manager_venv/`
+`uwsgi --socket :8001 --module test_project.wsgi --virtualenv /home/gbmillard/projects/virtualenvs/asset_manager_venv/`
 
 Visiting our django app on `<ip_address>:8000` and our test_project.wsgi on `<ip_address>:8001`. This will not be visible in the browser but the uwsgi terminal will show output for the request.
 
