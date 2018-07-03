@@ -254,6 +254,10 @@ Symlink to this file to nginx can see it:
 
 `sudo ln -s ~/path/to/your/mysite/mysite_nginx.conf /etc/nginx/sites-enabled/`
 
+Restart nginx:
+
+`sudo /etc/init.d/nginx restart`
+
 Set static files setting in Django settings.py:
 
 `STATIC_ROOT = os.path.join(BASE_DIR, "static/")`
@@ -264,7 +268,7 @@ Upload a picture to your Django project media directory:
 
 `/path/to/Django/Project/media/pic.jpg`
 
-Restart nginx, then nest if you can access it through nginx:
+Restart nginx, then test if you can access it through nginx:
 
 `sudo /etc/init.d/nginx restart` or `stop`, `start`
 
