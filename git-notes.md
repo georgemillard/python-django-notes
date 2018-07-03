@@ -10,6 +10,38 @@ Verify remote:
 Set branch master to follow remote:
 `git branch --set-upstream-to=origin/master master`
 
+### Importing a Bitbucket repository into Github
+
+On github, click the `+` in the top right of the screen, then click "Import Repository"
+
+Paste in the Bitbucket clone link and fill out details,  then click begin!
+
+**Note** You may get asked for credentials, these will be for the account you are importing it from (Ie, your bitbucket account).
+
+Once done, issues will need to be manually imported.
+
+#### Updating local / staging / live git repos
+The git repositorys will need to have their origin's updated in order to use the new GitHub Repo.
+```
+$ git remote rename origin bitbucket
+$ git remote add origin https://github.com/emfoundation/awesome-github-repo.git
+
+$ git remote rm bitbucket
+```
+
+This will allow you to fetch, but not to pull. You will get this error:
+```
+$ git pull
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+```
+In order to do this, you will need to set the upstream branches for each branch (Normally `master` & `develop` but any other branches you currently need)
+
+`git branch --set-upstream-to=origin/<branch> <branch>`
+
+ie: `git branch --set-upstream-to=origin/develop develop`
+
+
 ### Creating a new branch
 
 `git branch`
