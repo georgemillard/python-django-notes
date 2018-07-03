@@ -179,6 +179,8 @@ If that works, then test wtih uWSGI:
 
 `uwsgi --http :8000 --module myproject.wsgi --virtualenv /path/to/virtual/env/`
 
+(note - run this from django project root!)
+
 ### nginx
 
 ```
