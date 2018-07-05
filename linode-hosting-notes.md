@@ -290,8 +290,7 @@ server unix:///path/to/your/mysite/mysite.sock; # for a file socket
 # server 127.0.0.1:8001; # for a web port socket (we'll use this first)
 ```
 
-`uwsgi --ini mysite_uwsgi.ini`
-
+Create `mysite_uwsgi.ini` in django project folder:
 
 ```
 # mysite_uwsgi.ini file
@@ -337,6 +336,8 @@ The uid/gid flags from the .ini file were not being applied (verify by checking 
 To get the flags to apply, uwsgi must be run with SUDO!
 
 `sudo uwsgi --ini mysite_uwsgi.ini`
+
+Reset the .ini `chmod-socket = 664` then all should be well :-)
 
 
 #### Emperor Mode
