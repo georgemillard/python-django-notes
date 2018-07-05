@@ -384,7 +384,7 @@ sudo supervisorctl
 exit
 ```
 
-#### pgAdmin
+#### pgAdmin (not sure how useful this is but I'll leave instructions here just in case...
 
 To enable connections to server database through pgAdmin:
 
@@ -420,6 +420,18 @@ Ensure this line also has md5 set as its METHOD:
 6. Test local connection: `psql -U postgres -W` and enter your password. You should see the psql console.
 
 7. Test pgAdmin connection...
+
+
+#### Export/import DB using pg_dump
+
+`pg_dump -U username dbname > dbexport.pgsql`
+
+`psql -U username dbname < dbexport.pgsql`
+
+Boom.
+
+
+#### Then make sure to add your FQDN to you nginx conf and Django's `ALLOWED_HOSTS` setting.
 
 
 #### UFW
