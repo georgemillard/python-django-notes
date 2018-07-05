@@ -384,6 +384,43 @@ sudo supervisorctl
 exit
 ```
 
+#### pgAdmin
+
+To enable connections to server database through pgAdmin:
+
+1. set a password for postgres user:
+`sudo -u postgres psql`
+`postgres=# \password postgres`
+'\q'
+
+2. Add password to local .pgpass file
+
+`~/postgres/.pgpass`
+
+Each line should be of the form: `hostname:port:database:username:password`
+
+3. Allow local connections
+
+Edit `/etc/postgresql/9.5/main/pg_hba.conf`
+
+Find `local all postres peer` and `local all all peer`.
+
+Change the `peer`'s to `md5`
+
+4. Allow pgAdmin connections
+
+Edit `/etc/postgresql/9.5/main/pg_hba.conf`
+
+Ensure this line also has md5 set as its METHOD:
+
+`host all all ::1/128 md5`
+
+5. Restart the postgres server: `sudo service postgresql restart`
+
+6. Test local connection: `psql -U postgres -W` and enter your password. You should see the psql console.
+
+7. Test pgAdmin connection...
+
 
 #### UFW
 
