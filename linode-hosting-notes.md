@@ -433,6 +433,10 @@ Boom.
 
 #### Then make sure to add your FQDN to you nginx conf and Django's `ALLOWED_HOSTS` setting.
 
+#### SSL https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04
+
+#### Password protect if staging site https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04
+
 
 #### UFW
 
