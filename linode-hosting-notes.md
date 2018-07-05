@@ -280,7 +280,8 @@ Now we can run nginx with uwsgi:
 
 Visiting our django app on `<ip_address>:8000` and our test_project.wsgi on `<ip_address>:8001`. This will not be visible in the browser but the uwsgi terminal will show output for the request.
 
-#### Flipping sockets!
+
+#### Using uwsgi with a .ini file (see below) + flipping sockets!:
 
 Edit `mysitenginx.conf`:
 
@@ -289,17 +290,8 @@ server unix:///path/to/your/mysite/mysite.sock; # for a file socket
 # server 127.0.0.1:8001; # for a web port socket (we'll use this first)
 ```
 
-Then try:
-
-`uwsgi --socket mysite.sock --wsgi-file test.py`
-
-#### 502 Bad Gateway Error!!!
-
-Using uwsgi with a .ini file (see below):
-
 `uwsgi --ini mysite_uwsgi.ini`
 
-Need to set permissions on test_project to 777, and on mysite.sock to 777 (within the ini file):
 
 ```
 # mysite_uwsgi.ini file
@@ -324,14 +316,19 @@ socket          = /home/gbmillard/projects/test_project/sockets/mysite.sock
 # ... with appropriate permissions - may be needed
 chmod-socket    = 664
 uid = user
-gid = group
+gid = www-data
 # clear environment on exit
 vacuum          = true
 ```
 
-Create the sockets folder and ensure your user has write access to it. `/sockets rwxrwxr-x root:devs`
+Create the sockets folder with the following permissions. `/sockets rwxrwxr-x root:www-data`
 
 Then we can run with `uwsgi --ini mysite_uwsgi.ini`
+
+#### 502 Bad Gateway Error!!!
+
+1. Test by setting permissions on test_project/sockets to 777, and on mysite.sock to 777 (within the ini file)
+If this solves the issue, then you have a permission issue. In your .ini file check your `uid` is set to your user, and `gid` to `www-data` for nginx's user. If there is still a problem, see the following:
 
 __Solution!!!__
 
@@ -341,7 +338,6 @@ To get the flags to apply, uwsgi must be run with SUDO!
 
 `sudo uwsgi --ini mysite_uwsgi.ini`
 
-The .ini can be updated: `chmod = 664` and all is well :-)
 
 #### Emperor Mode
 
