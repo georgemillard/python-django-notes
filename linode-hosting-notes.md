@@ -299,11 +299,11 @@ Create `mysite_uwsgi.ini` in django project folder:
 env=DJANGO_SETTINGS_MODULE=test_project.settings_base
 # Django-related settings
 # the base directory (full path)
-chdir           = /home/gbmillard/projects/test_project
+chdir           = /path/t0/django/project
 # Django's wsgi file
-wsgi-file       = /home/gbmillard/projects/test_project/test_project/wsgi.py
+wsgi-file       = /path/to/django/wsgi.py
 # the virtualenv (full path)
-home            = /home/gbmillard/projects/virtualenvs/asset_manager_venv
+home            = /path/to/virtual/env
 
 # process-related settings
 # master
@@ -311,7 +311,7 @@ master          = true
 # maximum number of worker processes
 processes       = 10
 # the socket (use the full path to be safe
-socket          = /home/gbmillard/projects/test_project/sockets/mysite.sock
+socket          = /path/to/django/project/sockets/mysite.sock
 # ... with appropriate permissions - may be needed
 chmod-socket    = 664
 uid = user
