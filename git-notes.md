@@ -51,7 +51,12 @@ The steps to swap over from bitbucket are similar to the terminal commands, but 
 
 4. Next create a new remote by clicking "Add"
 
-5. Name this new remote "origin", and put the url as the clone link that can be found on your repo's github main page. It should automatically set the host type. Enter your github username. Press okay.
+5. Name this new remote "origin", then click the globe icon.
+
+6. Click edit accounts, and add your github account as a user. Setting it to basic and https seems to be the best way (unless you have your ssh key on your github account)
+
+7.  Now you should see the repository from github on the list, click the one you want to change to and 
+ it should automatically set the host type. Enter your github username. Press okay.
 
 6. Now delete the remote labelled "bitbucket", and close the settings tab.
 
