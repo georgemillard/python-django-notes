@@ -41,6 +41,22 @@ In order to do this, you will need to set the upstream branches for each branch 
 
 ie: `git branch --set-upstream-to=origin/develop develop`
 
+#### Sourcetree config changes
+The steps to swap over from bitbucket are similar to the terminal commands, but more graphical.
+1. Go to your repository settings and then the "Remotes" tab
+
+2. Click edit on remote that is called origin, and should be directed to a bitbucket url.
+
+3. Change the remote name to "bitbucket" and click ok
+
+4. Next create a new remote by clicking "Add"
+
+5. Name this new remote "origin", and put the url as the clone link that can be found on your repo's github main page. It should automatically set the host type. Enter your github username. Press okay.
+
+6. Now delete the remote labelled "bitbucket", and close the settings tab.
+
+7. Now you can git fetch and git pull, and it will fetch from the new origin which is now pointed to the github repo.
+
 
 ### Creating a new branch
 
