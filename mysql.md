@@ -21,3 +21,7 @@
 #### Show user privileges
 
 `SHOW GRANTS FOR 'user'@'localhost';`
+
+#### Export a database
+
+`mysqldump -u <username> -p <databasename> > file.sql`
